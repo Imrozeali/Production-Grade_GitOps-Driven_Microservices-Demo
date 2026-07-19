@@ -190,6 +190,7 @@ configs:
     # -- Create the argocd-cm configmap for [declarative setup]
     create: true
     kustomize.buildOptions: "--enable-helm"
+
     # -- Annotations to be added to argocd-cm configmap
     annotations: {}
 
@@ -428,7 +429,6 @@ configs:
     # If false, it is expected the configmap will be created by something else.
     create: true
     server.insecure: true
-
     # -- Annotations to be added to the argocd-cmd-params-cm ConfigMap
     annotations: {}
 
@@ -2628,13 +2628,13 @@ server:
     ## Must reference an existing Gateway
     # @default -- `[]` (See [values.yaml])
     parentRefs:
-      - name: app-alb-gateway
-        namespace: default
-        sectionName: https
+       - name: app-alb-gateway
+         namespace: default
+         sectionName: https
     # -- List of hostnames for the HTTPRoute
     # @default -- `[]` (See [values.yaml])
-    hostnames:
-      - argocd.devopsdock.site
+    hostnames: 
+       - argocd.imrdevops.biz
     # -- HTTPRoute rules configuration
     # @default -- `[]` (See [values.yaml])
     rules:
