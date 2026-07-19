@@ -21,6 +21,14 @@ jobs:
         uses: actions/checkout@v4
 
       # -------------------
+      # Convert GitHub owner to lowercase
+      # -------------------
+      - name: Convert repository owner to lowercase
+        run: |
+          echo "OWNER_LC=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
+          echo "IMAGE_NAME=ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/microservices-demo/${{ inputs.service }}:sha-${GITHUB_SHA}" >> $GITHUB_ENV
+
+      # -------------------
       # Docker Buildx (cache support)
       # -------------------
       - name: Set up Docker Buildx
